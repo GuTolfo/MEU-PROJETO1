@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>NUTRIPLUS</title>
+</head>
+
+
+<body>
+  <header>
+    <div class="img">
+      <!-- <img src="LOGO-removebg-preview.png" alt="LOGO-removebg-preview"> -->
+    </div>
+  </header>
+  <main class="main">
+
+    <!-- Formulário de postagem -->
+    <div class="newPost">
+
+      <div class="infoUser">
+        <div class="imgUser">
+        </div>
+        <strong>Gustavo Tolfo</strong>
+      </div>
+
+      <form action="#" class="formPost" id="formPost">
+        <textarea name="title" placeholder="Vamos mudar o mundo?" id="description"></textarea>
+        <div class="iconsAndButton">
+          <div class="icons"> </div>
+          
+
+          <button type="button" onclick="handleSubmit(e)" class="btnSubmitForm">Publicar</button>
+        </div>
+      </form>
+      <button onclick="enviar(e)">Enviar</button>
+    </div>
+
+    <ul class="posts" id="posts"></ul>
+
+  </main>
+
+  <script src="script.js"></script>
+
+  <!-- <input type="text" id="title" name="title">
+            <div class="comment-form__actions">
+              <div class="button button--confirm" id="handleSubmit" button onclick="mostarCaixa">
+                Comment
+              </div>
+              <div id="messages">
+                 Mensagens enviadas aparecerão aqui 
+              </div>
+
+              <script src="./script.js"></script> -->
+</body>
+</html>

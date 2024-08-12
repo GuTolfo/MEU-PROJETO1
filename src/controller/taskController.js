@@ -31,7 +31,28 @@ connection.query(query, params, (err, results) => {
     })
 }
 
+async function getTask (request, response) {
+        const query = "select * FROM Task";
+
+        connection.query((err, results) => {
+        if(results) {
+            response.status(200).json({
+                success: true,
+                message: "Sucesso",
+                data: results 
+            })
+        } else {
+            response.status(400).json({
+                success: false,
+                message: "Erro!",
+                sql: err
+            })
+        }
+
+    })
+}
 
 module.exports = {
-    storeTask
+    storeTask,
+    getTask
 }

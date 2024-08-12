@@ -210,3 +210,19 @@
     background: rgb(8,141,241);
   }
   
+  .delete-button {
+    font-size: 20px; /* Tamanho do emoji */
+    background-color: transparent; /* Fundo transparente */
+    border: none; /* Sem borda */
+    cursor: pointer; /* Cursor pointer ao passar o mouse */
+    margin-left: auto; /* Empurra o botão para o lado direito */
+  }
+   
+  .message-item {
+    display: flex; /* Exibir como flexbox para alinhamento do texto e botão */
+    align-items: center; /* Alinhar verticalmente os itens */
+    margin-bottom: 10px; /* Espaçamento entre as mensagens */
+    padding: 10px; /* Adicionar padding */
+    border: 1px solid #ccc; /* Adicionar borda */
+    border-radius: 5px; /* Bordas arredondadas */
+  }
