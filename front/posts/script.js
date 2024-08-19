@@ -1,4 +1,5 @@
 async function enviar(e){
+    console.log("entrou no botão")
     e.preventDefault();
 
     let description=document.getElementById("description").value;
@@ -14,19 +15,21 @@ async function enviar(e){
         body: JSON.stringify(data)
     })
 
+    
     const results = await response.json();
+    console.log(results)
     if (results.success){
         alert("success")
     } else{
         alert("err")
     }
 
-
 }
 
 async function getPosts() {
+    console.log("Entrou no getpost")
     //criar rota para pegar posts no banco
-    const response= await fetch("http://localhost:3000/api/posts",{
+    const response = await fetch("http://localhost:3000/api/listar/post",{
         method: "GET",
         headers:{
             "Content-Type":"application/json"
@@ -35,11 +38,19 @@ async function getPosts() {
 
     const results = await response.json();
     if (results.success){
-        alert("success")
-        console.log(results.data);
+        let divPost = document.getElementById("posts");
+        console.log(results)
 
-        div.append.innerHTML = results.data.decription;
+        for (const post of results.data) {
+            divPost.innerHTML += post.description+"</br>";
+        }
+        
+            
+        
+        
     } else{
         alert("err")
     }
 }
+
+getPosts()

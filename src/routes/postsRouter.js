@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
-const{salvarPost}=require("../controller/postsController")
+const{salvarPost, listarPosts} = require("../controller/postsController")
 
 router.post("/salvar/post",salvarPost);
-router.get("/posts", );
+router.get("/listar/post", listarPosts)
+
 
 module.exports=router;

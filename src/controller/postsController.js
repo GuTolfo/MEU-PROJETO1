@@ -5,6 +5,8 @@ async function salvarPost(request,response){
         request.body.description,
         request.body.id
     )
+    
+    console.log(parans)
 
     let query ="insert into tasks(description, idUsuario) values(?, ?)"
 
@@ -30,6 +32,40 @@ async function salvarPost(request,response){
     })
 }
 
+async function listarPosts(request, response) {
+
+    // Preparar o comando de execução no banco
+    connection.query('SELECT * FROM tasks', (err, results) => { 
+        try {  // Tenta retornar as solicitações requisitadas
+            if (results) {  // Se tiver conteúdo 
+                response.status(200).json({
+                    success: true,
+                    message: 'Retorno de posts com sucesso!',
+                    data: results
+                });
+            } else {  // Retorno com informações de erros
+                response
+                    .status(400)
+                    .json({
+                        success: false,
+                        message: `Não foi possível retornar os posts.`,
+                        query: err.sql,
+                        sqlMessage: err.sqlMessage
+                    });
+            }
+        } catch (e) {  // Caso aconteça qualquer erro no processo na requisição, retorna uma mensagem amigável
+            response.status(400).json({
+                succes: false,
+                message: "Ocorreu um erro. Não foi possível realizar sua requisição!",
+                query: err.sql,
+                sqlMessage: err.sqlMessage
+            })
+        }   
+    });
+}
+
+
 module.exports={
-    salvarPost
+    salvarPost,
+    listarPosts
 }
