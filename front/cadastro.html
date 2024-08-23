@@ -8,7 +8,7 @@
         /* Estilos para a página de login */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e9ecef;
+            background-color: #40aa4e;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -80,7 +80,7 @@
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" required>
 
-            <input type="submit" value="Cadastro">
+
             <button onclick="cadastrar(event)">Cadastro</button>
         </form>
         <p><a href="#">Esqueceu sua senha?</a></p>
@@ -90,12 +90,12 @@
         async function cadastrar(event) {
             event.preventDefault();
 
-            const username = document.getElementById('username').value;
+            const name = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            let data = {username,password};
-
-            const response = await fetch('http://localhost:3000/api/login', {
+            let data = {name,password};
+            console.log(data)
+            const response = await fetch('http://localhost:3003/api/cadastrar', {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json"
@@ -103,13 +103,14 @@
                 body: JSON.stringify(data)
             })
 
-            const results = response.json();
+            const results = await response.json();
 
             if(results.success) {
 
                 window.location.href = "./posts/index.html"
             }
         }
+
 
         document.getElementById('loginForm').addEventListener('submit', async function(event) {
             event.preventDefault();

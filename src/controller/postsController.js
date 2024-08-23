@@ -2,13 +2,13 @@ const connection = require('../config/db');
 
 async function salvarPost(request,response){
     let parans=Array(
-        request.body.description,
-        request.body.id
+        request.body.title,
+        // request.body.id
     )
     
     console.log(parans)
 
-    let query ="insert into tasks(description, idUsuario) values(?, ?)"
+    let query ="insert into posts_nutricao(title) values( ?)"
 
     connection.query(query,parans,(err, results)=>{
         console.log(err, results)

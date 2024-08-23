@@ -6,7 +6,10 @@ async function storeTask(request, response) {
     const params = Array(
     request.body.title,
     request.body.description
-);
+); 
+
+
+console.log("aqui")
 
     const query = "INSERT INTO tasks(title, description) VALUES(?,?)";
 
