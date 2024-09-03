@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro</title>
     <style>
-        /* Estilos para a página de login */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #40aa4e;
@@ -58,7 +57,7 @@
             transition: background-color 0.3s ease;
         }
         input[type="submit"]:hover {
-            background-color: #367a39;
+            background-color: #2d5b27;
         }
         .login-container a {
             color: #367a39;
@@ -72,7 +71,7 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>Cadastro</h2>
+        <h2><a href="../front/posts/index.html">Cadastrar</a></h2>
         <form id="loginForm">
             <label for="username">Usuário:</label>
             <input type="text" id="username" name="username" required>
@@ -80,45 +79,19 @@
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" required>
 
-
-            <button onclick="cadastrar(event)">Cadastro</button>
+            <input type="submit" value="Cadastrar">
         </form>
-        <p><a href="#">Esqueceu sua senha?</a></p>
+        <p><a href="../front/posts/index.html">Já tem uma conta? Faça login</a></p>
     </div>
 
     <script>
-        async function cadastrar(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            let data = {name,password};
-            console.log(data)
-            const response = await fetch('http://localhost:3003/api/cadastrar', {
-                method: "POST",
-                headers: {
-                    "Content-Type":"application/json"
-                },
-                body: JSON.stringify(data)
-            })
-
-            const results = await response.json();
-
-            if(results.success) {
-
-                window.location.href = "./posts/index.html"
-            }
-        }
-
-
         document.getElementById('loginForm').addEventListener('submit', async function(event) {
             event.preventDefault();
 
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            const response = await fetch('/login', {
+            const response = await fetch('http://localhost:3003/api/cadastrar', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -129,10 +102,10 @@
             const result = await response.json();
 
             if (result.success) {
-                alert('Login bem-sucedido!');
-                // Redirecionar ou fazer outra ação
+                localStorage.setItem('username', username);
+                window.location.href = "./index.html";
             } else {
-                alert('Falha no login: ' + result.message);
+                alert('Falha ao cadastrar: ' + result.message);
             }
         });
     </script>

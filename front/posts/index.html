@@ -1,59 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <title>NUTRIPLUS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUTRIPLUS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-  <header>
-    <div class="img">
-      <img src="../LOGO.png" alt="">
-    </div>
-    <!-- Botão para abrir a barra lateral -->
-    <button class="openbtn" onclick="openNav()">☰ Menu</button>
-
-    <!-- Barra lateral dentro do header -->
-    <div id="sidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#">Home</a>
-      <a href="../nutricionistas.html">Profissionais</a>
-      <a href="../cadastro.html ">Sair</a>
-    </div>
-  </header>
-
-  <div id="main">
-    <main class="main">
-      <!-- Conteúdo principal do seu site -->
-      <div class="newPost">
-        <div class="infoUser">
-          <div class="imgUser"></div>
-          <strong>Gustavo Tolfo</strong>
+    <header>
+        <div class="img">
+            <img src="../LOGO.png" alt="Logo">
         </div>
-
-        <form action="" class="formPost" id="formPost">
-          <textarea name="title" placeholder="Vamos mudar o mundo?" id="title"></textarea>
-          <div class="iconsAndButton">
-            <div class="icons"></div>
-            <button type="button" id="handleSubmit" class="btnSubmitForm">Publicar</button>
-          </div>
-        </form>
-      </div>
-
-      <ul class="posts" id="posts"></ul>
+        <button class="openbtn" onclick="openNav()">☰ Menu</button>
+        <div id="sidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">Home</a>
+            <a href="../nutricionistas.html">Profissionais</a>
+            <a href="../cadastro.html">Sair</a>
+        </div>
+    </header>
+    <main id="main">
+        <div class="newPost">
+            <div class="infoUser">
+                <div class="imgUser"></div>
+                <strong id="userName">Nome do Usuário</strong>
+            </div>
+            <form id="formPost" class="formPost">
+                <textarea name="title" placeholder="Vamos mudar o mundo?" id="title"></textarea>
+                <div class="iconsAndButton">
+                    <div class="icons"></div>
+                    <button type="button" id="handleSubmit" class="btnSubmitForm">Publicar</button>
+                </div>
+            </form>
+        </div>
+        <ul class="posts" id="posts"></ul>
     </main>
-
-    <div id="messages">
-      <!-- Mensagens enviadas aparecerão aqui -->
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>

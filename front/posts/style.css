@@ -344,3 +344,45 @@ background: #f7f4f2;
 border-radius: 10px;
 box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.05);
 }
+
+/* Estilo para a lista de postagens */
+.posts {
+  list-style-type: none; /* Remove as bolinhas da lista */
+  padding: 0; /* Remove o padding padrão */
+  margin: 0; /* Remove a margem padrão */
+}
+
+.post {
+  background-color: #fff; /* Cor de fundo da postagem */
+  border: 1px solid #ddd; /* Borda da postagem */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra da postagem */
+  margin-bottom: 20px; /* Espaçamento inferior entre as postagens */
+  padding: 20px; /* Espaçamento interno da postagem */
+  transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+}
+
+.post:hover {
+  background-color: #f9f9f9; /* Cor de fundo ao passar o mouse */
+  transform: translateY(-5px); /* Efeito de elevação */
+}
+
+.post h3 {
+  margin: 0 0 10px; /* Espaçamento inferior do título da postagem */
+  color: #333; /* Cor do título da postagem */
+  font-size: 18px; /* Tamanho da fonte do título */
+  font-weight: bold; /* Fonte em negrito */
+}
+
+.post p {
+  margin: 0; /* Remove a margem do parágrafo */
+  color: #666; /* Cor do texto da postagem */
+  font-size: 16px; /* Tamanho da fonte do texto */
+}
+
+.post .author {
+  font-size: 14px; /* Tamanho da fonte do autor */
+  color: #999; /* Cor do texto do autor */
+  margin-top: 10px; /* Espaçamento superior do autor */
+  text-align: right; /* Alinha o texto do autor à direita */
+}
