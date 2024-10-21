@@ -1,16 +1,16 @@
 const connection = require('../config/db');
 
 async function salvarPost(request,response){
-    let parans=Array(
+    let params=Array(
         request.body.title,
         // request.body.id
     )
     
-    console.log(parans)
+    console.log(params)
 
-    let query ="insert into posts_nutricao(title) values( ?)"
+    let query ="insert into posts(title) values(?);"
 
-    connection.query(query,parans,(err, results)=>{
+    connection.query(query,params,(err, results)=>{
         console.log(err, results)
         if (results){
             response
@@ -35,7 +35,7 @@ async function salvarPost(request,response){
 async function listarPosts(request, response) {
 
     // Preparar o comando de execução no banco
-    connection.query('SELECT * FROM tasks', (err, results) => { 
+    connection.query('SELECT * FROM posts', (err, results) => { 
         try {  // Tenta retornar as solicitações requisitadas
             if (results) {  // Se tiver conteúdo 
                 response.status(200).json({

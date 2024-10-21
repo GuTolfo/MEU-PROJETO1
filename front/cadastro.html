@@ -71,17 +71,17 @@
 </head>
 <body>
     <div class="login-container">
-        <h2><a href="../front/posts/index.html">Cadastrar</a></h2>
         <form id="loginForm">
-            <label for="username">Usuário:</label>
+            <label for="name">Usuário:</label>
             <input type="text" id="username" name="username" required>
 
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" required>
-
-            <input type="submit" value="Cadastrar">
+            
+            
+            <input href="../front/posts/index.html" type="submit" value="Cadastrar">
         </form>
-        <p><a href="../front/posts/index.html">Já tem uma conta? Faça login</a></p>
+        <p><a href="../front/login.html">Já tem uma conta? Faça login</a></p>
     </div>
 
     <script>
@@ -103,7 +103,7 @@
 
             if (result.success) {
                 localStorage.setItem('username', username);
-                window.location.href = "./index.html";
+                window.location.href = "../front/posts/index.html";
             } else {
                 alert('Falha ao cadastrar: ' + result.message);
             }

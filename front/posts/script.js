@@ -1,60 +1,62 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // Carregar postagens existentes
-    const response = await fetch('http://localhost:3003/api/posts');
-    const posts = await response.json();
+    try {
+        const response = await fetch('http://localhost:3003/api/posts');
+        const posts = await response.json();
+        const postsContainer = document.getElementById('posts');
+        const username = localStorage.getItem('username') || 'Anônimo'; // Nome do usuário logado ou 'Anônimo'
 
-    const postsContainer = document.getElementById('posts');
-    const username = localStorage.getItem('username'); // Recupera o nome do usuário logado
-
-    posts.forEach(post => {
-        const postElement = document.createElement('li');
-        postElement.className = 'post';
-
-        postElement.innerHTML = `
-            <h3>${post.title}</h3>
-            <p>${post.content}</p>
-            <p class="author">Autor: ${post.author || username}</p>
-        `;
-
-        postsContainer.appendChild(postElement);
-    });
+        posts.forEach(post => {
+            addPostToList(post.title, post.author || username);
+        });
+    } catch (error) {
+        console.error('Erro ao carregar postagens:', error);
+        alert('Não foi possível carregar as postagens.');
+    }
 });
 
 document.getElementById("handleSubmit").addEventListener('click', async () => {
-    let title = document.getElementById("title").value;
+    const title = document.getElementById("title").value.trim();
+    
+    if (title === "") {
+        alert("Por favor, insira uma mensagem antes de publicar.");
+        return;
+    }
 
-    // Verifica se o campo de título não está vazio
-    if (title.trim() !== "") {
-        const username = localStorage.getItem('username'); // Recupera o nome do usuário logado
+    const username = localStorage.getItem('username') || 'Anônimo'; // Nome do usuário logado ou 'Anônimo'
 
-        // Adiciona a postagem ao banco de dados
+    try {
+        // Fazendo a requisição POST para enviar a postagem
         const response = await fetch('http://localhost:3003/api/posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ title, author: username })
+            body: JSON.stringify({ title: title, author: username }) // Enviando o título e autor
         });
 
-        const result = await response.json();
-
-        if (result.success) {
-            addPostToList(title, username);
-        } else {
-            alert('Falha ao publicar: ' + result.message);
+        if (!response.ok) {
+            const errorResponse = await response.json();
+            console.error('Erro da API:', errorResponse);
+            alert('Erro ao publicar a postagem: ' + (errorResponse.message || 'Erro desconhecido.'));
+            return;
         }
 
-        // Limpar o campo de título após a publicação
-        document.getElementById("title").value = "";
-    } else {
-        alert("Por favor, insira uma mensagem antes de publicar.");
+        const result = await response.json(); // Resultado da API após o POST
+        console.log('Postagem publicada com sucesso:', result);
+
+        // Adicionando a postagem ao feed
+        addPostToList(result.title, result.author || username);
+        document.getElementById("title").value = ""; // Limpa o campo de texto após a postagem
+    } catch (error) {
+        console.error('Erro ao publicar postagem:', error);
+        alert('Erro ao publicar postagem. Verifique sua conexão ou tente novamente mais tarde.');
     }
 });
 
+// Função para adicionar uma nova postagem ao feed visual
 function addPostToList(title, author) {
     const postsList = document.getElementById("posts");
 
-    // Criar um novo item de lista
     const newPost = document.createElement("li");
     newPost.className = "post";
 
@@ -69,8 +71,7 @@ function addPostToList(title, author) {
         <p>${title}</p>
     `;
 
-    // Adicionar o novo post ao início da lista
-    postsList.prepend(newPost);
+    postsList.prepend(newPost); // Insere a nova postagem no início da lista
 }
 
 function openNav() {
