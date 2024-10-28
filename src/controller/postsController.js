@@ -67,5 +67,5 @@ async function listarPosts(request, response) {
 
 module.exports={
     salvarPost,
-    listarPosts
+    listarPosts,
 }

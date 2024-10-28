@@ -11,7 +11,7 @@ app.set( 'port', process.env.PORT || 3003);
 app.use(express.json());
 app.use(cors());
 
-app.use('/api/posts', postsRouter);
+app.use('/api', postsRouter);
 app.use('/api', usersRouter);
 
 module.exports = app;

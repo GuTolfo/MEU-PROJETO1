@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('http://localhost:3003/api/posts');
+        const response = await fetch('http://localhost:3003/api/listar/post');
         const posts = await response.json();
         const postsContainer = document.getElementById('posts');
         const username = localStorage.getItem('username') || 'Anônimo'; // Nome do usuário logado ou 'Anônimo'
@@ -26,7 +26,7 @@ document.getElementById("handleSubmit").addEventListener('click', async () => {
 
     try {
         // Fazendo a requisição POST para enviar a postagem
-        const response = await fetch('http://localhost:3003/api/posts', {
+        const response = await fetch('http://localhost:3003/api/salvar/post', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
