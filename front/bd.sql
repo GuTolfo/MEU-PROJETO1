@@ -1,6 +1,8 @@
-create DATABASE posts_nutricao;
+create DATABASE posts;
 
-use posts_nutricao;
+use nutriplus;
+
+drop table usuarios;
 
 create table posts(
 	id INT auto_increment primary key,
@@ -8,10 +10,12 @@ create table posts(
     created_at TIMESTAMP DEFAULT current_timestamp
 );
 
+INSERT INTO posts(title) VALUES ("teste");
+
 create table users(
 	id int not null auto_increment primary key,
     name varchar(255),
-    email varchar(255),
+    cidade varchar(255),
     password varchar(255),
     created_at timestamp default current_timestamp
 );
