@@ -3,12 +3,12 @@ const connection = require('../config/db');
 async function salvarPost(request, response) {
     let params = [
         request.body.title,
-        request.body.author // Adicionando o autor
+        request.body.userId // Adicionando o autor
     ];
 
     console.log(params);
 
-    let query = "INSERT INTO posts (title, author) VALUES (?, ?);";
+    let query = "INSERT INTO posts (title, user_id) VALUES (?, ?);";
 
     connection.query(query, params, (err, results) => {
         if (results) {
@@ -16,7 +16,7 @@ async function salvarPost(request, response) {
                 success: true,
                 message: "sucesso",
                 title: request.body.title, // Inclui o título retornado
-                author: request.body.author // Inclui o autor retornado
+                userId: request.body.userId // Inclui o autor retornado
             });
         } else {
             response.status(400).json({

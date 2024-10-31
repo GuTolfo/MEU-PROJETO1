@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const username = localStorage.getItem('username') || 'Anônimo'; // Nome do usuário logado ou 'Anônimo'
 
         posts.forEach(post => {
-            addPostToList(post.title, post.author || username);
+            addPostToList(post.title, post.userId || username);
         });
     } catch (error) {
         console.error('Erro ao carregar postagens:', error);
@@ -31,7 +31,7 @@ document.getElementById("handleSubmit").addEventListener('click', async () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ title: title, author: username }) // Enviando o título e autor
+            body: JSON.stringify({ title: title, userId: username }) // Enviando o título e autor
         });
 
         if (!response.ok) {
@@ -45,7 +45,7 @@ document.getElementById("handleSubmit").addEventListener('click', async () => {
         console.log('Postagem publicada com sucesso:', result);
 
         // Adicionando a postagem ao feed
-        addPostToList(result.title, result.author || username);
+        addPostToList(result.title, result.userId || username);
         document.getElementById("title").value = ""; // Limpa o campo de texto após a postagem
     } catch (error) {
         console.error('Erro ao publicar postagem:', error);
@@ -54,7 +54,7 @@ document.getElementById("handleSubmit").addEventListener('click', async () => {
 });
 
 // Função para adicionar uma nova postagem ao feed visual
-function addPostToList(title, author) {
+function addPostToList(title, userId) {
     const postsList = document.getElementById("posts");
 
     const newPost = document.createElement("li");
@@ -64,7 +64,7 @@ function addPostToList(title, author) {
         <div class="infoUserPost">
             <div class="imgUserPost"></div>
             <div class="nameAndHour">
-                <strong>${author}</strong>
+                <strong>${userId}</strong>
                 <p>Agora mesmo</p>
             </div>
         </div>
