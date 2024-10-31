@@ -97,16 +97,16 @@
         document.getElementById('loginForm').addEventListener('submit', async function(event) {
             event.preventDefault();
 
-            const username = document.getElementById('username').value;
+            const name = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const city = document.getElementById('city').value;
+            const cidade = document.getElementById('city').value;
 
             const response = await fetch('http://localhost:3003/api/cadastrar', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username, password, city })
+                body: JSON.stringify({ name, password, cidade })
             });
 
             const result = await response.json();

@@ -1,71 +1,53 @@
 const connection = require('../config/db');
 
-async function salvarPost(request,response){
-    let params=Array(
+async function salvarPost(request, response) {
+    let params = [
         request.body.title,
-        // request.body.id
-    )
-    
-    console.log(params)
+        request.body.author // Adicionando o autor
+    ];
 
-    let query ="insert into posts(title) values(?);"
+    console.log(params);
 
-    connection.query(query,params,(err, results)=>{
-        console.log(err, results)
-        if (results){
-            response
-                .status(200)
-                .json({
-                    success:true,
-                    massage:"sucesso",
-                    data:results
-                })
-        } else{
-            response
-                .status(400)
-                .json({
-                    success:false,
-                    massage:"sem sucesso",
-                    data:results
-                })
-        }
-    })
-}
+    let query = "INSERT INTO posts (title, author) VALUES (?, ?);";
 
-async function listarPosts(request, response) {
-
-    // Preparar o comando de execução no banco
-    connection.query('SELECT * FROM posts', (err, results) => { 
-        try {  // Tenta retornar as solicitações requisitadas
-            if (results) {  // Se tiver conteúdo 
-                response.status(200).json({
-                    success: true,
-                    message: 'Retorno de posts com sucesso!',
-                    data: results
-                });
-            } else {  // Retorno com informações de erros
-                response
-                    .status(400)
-                    .json({
-                        success: false,
-                        message: `Não foi possível retornar os posts.`,
-                        query: err.sql,
-                        sqlMessage: err.sqlMessage
-                    });
-            }
-        } catch (e) {  // Caso aconteça qualquer erro no processo na requisição, retorna uma mensagem amigável
+    connection.query(query, params, (err, results) => {
+        if (results) {
+            response.status(200).json({
+                success: true,
+                message: "sucesso",
+                title: request.body.title, // Inclui o título retornado
+                author: request.body.author // Inclui o autor retornado
+            });
+        } else {
             response.status(400).json({
-                succes: false,
-                message: "Ocorreu um erro. Não foi possível realizar sua requisição!",
-                query: err.sql,
-                sqlMessage: err.sqlMessage
-            })
-        }   
+                success: false,
+                message: "sem sucesso",
+                data: results
+            });
+        }
     });
 }
 
-
-module.exports={
-    salvarPost,
-    listarPosts,
+async function listarPosts(request, response) {
+    connection.query('SELECT * FROM posts', (err, results) => { 
+        if (results) {  
+            response.status(200).json({
+                success: true,
+                message: 'Retorno de posts com sucesso!',
+                data: results
+            });
+        } else {
+            response.status(400).json({
+                success: false,
+                message: 'Não foi possível retornar os posts.',
+                query: err.sql,
+                sqlMessage: err.sqlMessage
+            });
+        }
+    });
 }
+
+module.exports = {
+    salvarPost,
+    listarPosts
+};
