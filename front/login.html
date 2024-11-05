@@ -80,60 +80,12 @@
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" required>
 
-            <input type="submit" value="Cadastro">
-            <button onclick="cadastrar(event)">Cadastro</button>
+            <input id="btn" type="submit" value="Cadastro">
         </form>
         <p><a href="#">Esqueceu sua senha?</a></p>
     </div>
 
-    <script>
-        async function cadastrar(event) {
-            event.preventDefault();
+    <script src="login.js"></script>
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            let data = {username,password};
-
-            const response = await fetch('http://localhost:3000/api/login', {
-                method: "POST",
-                headers: {
-                    "Content-Type":"application/json"
-                },
-                body: JSON.stringify(data)
-            })
-
-            const results = response.json();
-
-            if(results.success) {
-
-                window.location.href = "./posts/index.html"
-            }
-        }
-
-        document.getElementById('loginForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
-
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            const response = await fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                alert('Login bem-sucedido!');
-                // Redirecionar ou fazer outra ação
-            } else {
-                alert('Falha no login: ' + result.message);
-            }
-        });
-    </script>
 </body>
 </html>

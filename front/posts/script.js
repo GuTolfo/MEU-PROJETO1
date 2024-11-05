@@ -1,12 +1,16 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  
     try {
         const response = await fetch('http://localhost:3003/api/listar/post');
         const posts = await response.json();
-        const postsContainer = document.getElementById('posts');
-        const username = localStorage.getItem('username') || 'Anônimo'; // Nome do usuário logado ou 'Anônimo'
 
-        posts.forEach(post => {
-            addPostToList(post.title, post.userId || username);
+        console.log(posts)
+
+        const postsContainer = document.getElementById('posts');
+
+
+        posts.data.forEach(post => {
+            addPostToList(post.title, post.userId || post.author);
         });
     } catch (error) {
         console.error('Erro ao carregar postagens:', error);
@@ -15,6 +19,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 document.getElementById("handleSubmit").addEventListener('click', async () => {
+
+    let username = sessionStorage.getItem("nome");
+    let id = sessionStorage.getItem("userId");
+    
     const title = document.getElementById("title").value.trim();
     
     if (title === "") {
@@ -22,16 +30,22 @@ document.getElementById("handleSubmit").addEventListener('click', async () => {
         return;
     }
 
-    const username = localStorage.getItem('username') || 'Anônimo'; // Nome do usuário logado ou 'Anônimo'
 
-    try {
+        let data = {
+            title, 
+            id, 
+            username
+        }
+    
+        console.log(data)
+
         // Fazendo a requisição POST para enviar a postagem
         const response = await fetch('http://localhost:3003/api/salvar/post', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ title: title, userId: username }) // Enviando o título e autor
+            body: JSON.stringify(data) // Enviando o título e autor
         });
 
         if (!response.ok) {
@@ -44,13 +58,13 @@ document.getElementById("handleSubmit").addEventListener('click', async () => {
         const result = await response.json(); // Resultado da API após o POST
         console.log('Postagem publicada com sucesso:', result);
 
-        // Adicionando a postagem ao feed
-        addPostToList(result.title, result.userId || username);
-        document.getElementById("title").value = ""; // Limpa o campo de texto após a postagem
-    } catch (error) {
+        // // Adicionando a postagem ao feed
+        // addPostToList(result.title, result.userId || username);
+        // document.getElementById("title").value = ""; // Limpa o campo de texto após a postagem
+    
         console.error('Erro ao publicar postagem:', error);
         alert('Erro ao publicar postagem. Verifique sua conexão ou tente novamente mais tarde.');
-    }
+    
 });
 
 // Função para adicionar uma nova postagem ao feed visual
@@ -70,6 +84,9 @@ function addPostToList(title, userId) {
         </div>
         <p>${title}</p>
     `;
+
+    //criar um fetch para o get /listar/post
+    //ao buscar os valores, tratá-los com o innerhtml a cima
 
     postsList.prepend(newPost); // Insere a nova postagem no início da lista
 }
