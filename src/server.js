@@ -13,7 +13,7 @@ const swaggerOptions = {
      },
      servers: [{ url: "http://Localhost:3003" }],
     },
-    apis: ['${_dirname}/routes/*.js'], // caminho para as rotas
+    apis: [`${__dirname}/routes/*.js`], // caminho para as rotas
 };
 
 

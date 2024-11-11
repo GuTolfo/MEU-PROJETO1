@@ -17,7 +17,7 @@ const{salvarPost, listarPosts} = require("../controller/postsController")
  *              items:
  *                type: object
  */
-router.post("/salvar/post",salvarPost);
+router.post("/salvar/post", salvarPost);
 
 /**
  * @swagger

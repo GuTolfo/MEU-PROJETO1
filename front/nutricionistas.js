@@ -22,6 +22,10 @@ const nutritionists = [
 
 // Função para exibir a lista de nutricionistas na página
 function displayNutritionists() {
+  let cidade = sessionStorage.getItem("cidade")
+  document.getElementById("titulo").innerText = `Nutricionistas em ${cidade}`;
+  console.log(cidade)
+
   const list = document.getElementById('nutritionist-list'); // Obtém o elemento da lista pelo ID
 
   nutritionists.forEach(nutritionist => { // Percorre o array de nutricionistas

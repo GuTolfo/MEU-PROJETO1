@@ -69,5 +69,6 @@ async function login(request, response) {
     });
 }
 module.exports = {
-    cadastro, login
+    cadastro,
+    login
 }

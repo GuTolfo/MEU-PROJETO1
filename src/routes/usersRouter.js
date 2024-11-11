@@ -34,6 +34,6 @@ router.post('/cadastrar', cadastro);
  *              items:
  *                type: object
  */
-router.post("/login", login)
+router.post("/login", login);
 
 module.exports = router;

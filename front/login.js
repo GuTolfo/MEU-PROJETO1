@@ -24,6 +24,7 @@ document.getElementById("btn").addEventListener("click", async function(event){
     
     sessionStorage.setItem("userId", results.data[0].id);
     sessionStorage.setItem("nome", results.data[0].name);
+    sessionStorage.setItem("cidade", results.data[0].cidade);
     
    
     if(results.success) {
