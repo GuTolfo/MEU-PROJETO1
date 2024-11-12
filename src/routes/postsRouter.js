@@ -36,7 +36,21 @@ router.post("/salvar/post", salvarPost);
  */
 router.get("/listar/post", listarPosts);
 
-
+/**
+ * @swagger
+ * /deletar/post:
+ *  get:
+ *    summary: Deleta as postagens 
+ *    responses:
+ *      200:
+ *        description: Delete
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                type: object
+ */
 router.delete("/deletar/post/:postId", deletarPost);
 
 module.exports=router;
