@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const{salvarPost, listarPosts} = require("../controller/postsController")
+const{salvarPost, listarPosts, deletarPost} = require("../controller/postsController")
 
 /**
  * @swagger
@@ -36,5 +36,7 @@ router.post("/salvar/post", salvarPost);
  */
 router.get("/listar/post", listarPosts);
 
+
+router.delete("/deletar/post/:postId", deletarPost);
 
 module.exports=router;

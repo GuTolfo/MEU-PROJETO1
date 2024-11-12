@@ -49,7 +49,33 @@ async function listarPosts(request, response) {
     });
 }
 
+async function deletarPost(request, response) {
+
+    let postId = request.params.postId;
+    console.log(postId);
+    let query = 'DELETE FROM posts WHERE id = ?';
+
+    connection.query(query, postId, (err, results) => { 
+        if (results) {  
+            response.status(200).json({
+                success: true,
+                message: 'Deletado!',
+                data: results
+            });
+        } else {
+            response.status(400).json({
+                success: false,
+                message: 'Não foi possível deletar.',
+                query: err.sql,
+                sqlMessage: err.sqlMessage
+            });
+        }
+    });
+}
+
+
 module.exports = {
     salvarPost,
-    listarPosts
+    listarPosts,
+    deletarPost
 };

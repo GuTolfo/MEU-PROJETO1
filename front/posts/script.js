@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
         posts.data.forEach(post => {
-            addPostToList(post.title, post.userId || post.author);
+            addPostToList(post.title, post.userId || post.author, post.id);
         });
     } catch (error) {
         console.error('Erro ao carregar postagens:', error);
@@ -68,7 +68,7 @@ document.getElementById("handleSubmit").addEventListener('click', async () => {
 });
 
 // Função para adicionar uma nova postagem ao feed visual
-function addPostToList(title, userId) {
+function addPostToList(title, userId, postId) {
     const postsList = document.getElementById("posts");
 
     const newPost = document.createElement("li");
@@ -83,6 +83,7 @@ function addPostToList(title, userId) {
             </div>
         </div>
         <p>${title}</p>
+        <button id="deletar" onclick="deletar(${postId})">Deletar</button>
     `;
 
     //criar um fetch para o get /listar/post
@@ -101,3 +102,18 @@ function closeNav() {
     document.getElementById("main").style.marginLeft = "0";
 }
 
+async function deletar(postId){
+    console.log(postId)
+    const response = await fetch(`http://localhost:3003/api/deletar/post/${postId}`, {
+        method: 'DELETE',
+        });
+
+
+    const result = await response.json();
+    
+    if(result.success){
+        alert("Deletado com sucesso.")
+    }
+
+
+}

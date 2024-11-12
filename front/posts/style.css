@@ -386,3 +386,29 @@ box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.05);
   margin-top: 10px; /* Espaçamento superior do autor */
   text-align: right; /* Alinha o texto do autor à direita */
 }
+
+
+/* Estilo para o botão de deletar */
+button#deletar {
+  background-color: #ff4c4c; /* Cor de fundo vermelha */
+  color: white; /* Cor do texto branca */
+  border: none; /* Remove a borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 5px 15px; /* Espaçamento interno */
+  font-weight: bold; /* Negrito */
+  cursor: pointer; /* Cursor de pointer */
+  transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+  margin-top: 10px; /* Espaçamento superior */
+}
+
+/* Efeito ao passar o mouse */
+button#deletar:hover {
+  background-color: #e63946; /* Cor de fundo ao passar o mouse */
+  transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+
+/* Efeito ao pressionar */
+button#deletar:active {
+  background-color: #d62828; /* Cor mais escura ao pressionar */
+  transform: scale(0.98); /* Leve redução ao pressionar */
+}
