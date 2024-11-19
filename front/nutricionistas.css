@@ -118,3 +118,216 @@
     }
   }
   
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #40aa4e;
+  padding: 10px 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+.city-selector {
+  text-align: center;
+  margin: 20px;
+}
+
+.city-selector label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+#nutritionist-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#nutritionist-table th,
+#nutritionist-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+#nutritionist-table th {
+  background-color: #40aa4e;
+  color: white;
+}
+
+#nutritionist-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #40aa4e;
+  padding: 10px 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+.city-selector {
+  text-align: center;
+  margin: 20px;
+}
+
+.city-selector label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+#nutritionist-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#nutritionist-table th,
+#nutritionist-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+#nutritionist-table th {
+  background-color: #40aa4e;
+  color: white;
+}
+
+#nutritionist-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #40aa4e;
+  padding: 10px 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+.city-selector {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.city-selector label {
+  font-size: 18px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+#city-select {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  width: 250px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+#city-select:hover {
+  border-color: #40aa4e;
+  background-color: #f1f1f1;
+}
+
+#city-select:focus {
+  outline: none;
+  border-color: #40aa4e;
+  background-color: #f1f1f1;
+}
+
+#nutritionist-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#nutritionist-table th,
+#nutritionist-table td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+}
+
+#nutritionist-table th {
+  background-color: #40aa4e;
+  color: white;
+}
+
+#nutritionist-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#nutritionist-table tr:hover {
+  background-color: #e6f5e6;
+}

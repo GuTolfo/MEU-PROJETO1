@@ -73,9 +73,29 @@ async function deletarPost(request, response) {
     });
 }
 
+async function editarPost(request, response) {
+    const postId = request.params.postId;
+    const { title } = request.body;
+
+    const query = 'UPDATE posts SET title = ? WHERE id = ?';
+
+    connection.query(query, [title, postId], (err, results) => {
+        if (results) {
+            response.status(200).json({ success: true, message: "Postagem editada com sucesso!" });
+        } else {
+            response.status(400).json({
+                success: false,
+                message: 'Erro ao editar postagem.',
+                error: err
+            });
+        }
+    });
+}
+
 
 module.exports = {
     salvarPost,
     listarPosts,
-    deletarPost
+    deletarPost,
+    editarPost
 };

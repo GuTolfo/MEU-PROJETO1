@@ -412,3 +412,29 @@ button#deletar:active {
   background-color: #d62828; /* Cor mais escura ao pressionar */
   transform: scale(0.98); /* Leve redução ao pressionar */
 }
+
+
+/* Estilo para o botão de editar */
+button#editar {
+  background-color: #23a0ff; /* Cor de fundo azul */
+  color: white; /* Cor do texto branca */
+  border: none; /* Remove a borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 5px 15px; /* Espaçamento interno */
+  font-weight: bold; /* Negrito */
+  cursor: pointer; /* Cursor de pointer */
+  transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+  margin-top: 10px; /* Espaçamento superior */
+}
+
+/* Efeito ao passar o mouse */
+button#editar:hover {
+  background-color: #1d89d6; /* Cor de fundo ao passar o mouse */
+  transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+
+/* Efeito ao pressionar */
+button#editar:active {
+  background-color: #1474a1; /* Cor mais escura ao pressionar */
+  transform: scale(0.98); /* Leve redução ao pressionar */
+}
